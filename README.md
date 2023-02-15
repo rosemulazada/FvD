@@ -27,15 +27,15 @@ Nb. Door *open* toe te voegen aan een *details* element kun je deze standaard op
 
 
   ### Je storyboard:
-  <img src="readme-images/animation-storyboard.jpeg" width="375px" alt="storyboard voor opdracht 1">
+  <img src="readme-images/animation-storyboard.jpg" width="375px" alt="storyboard voor opdracht 1">
 
 
   ### Je ambitie: 
   Aan deze technieken/punten wil ik werken:
-  - punt 1
-  - punt 2
-  - nog een punt
-  - ...
+  - Timen van de letters die 1 voor 1 omlaag vallen
+  - Het toevoegen van een bouncy feel/effect wanneer het 'i'tje omhoog springt tegen de '+1'
+  - Misschien het toevoegen van geluid als dat onderdeel is van wat wij gaan behandelen?
+  - Fade in & out animaties
  
 </details>
 
@@ -77,10 +77,10 @@ Nb. Door *open* toe te voegen aan een *details* element kun je deze standaard op
 
   ### Je ambitie: 
   Aan deze technieken/punten wil ik werken:
-  - Timen van de letters die 1 voor 1 omlaag vallen
-  - Het toevoegen van een bouncy feel/effect wanneer het 'i'tje omhoog springt tegen de '+1'
-  - Misschien het toevoegen van geluid als dat onderdeel is van wat wij gaan behandelen?
-  - Fade in & out animaties
+  - punt 1
+  - punt 2
+  - nog een punt
+  - ...
 </details>
 
 
