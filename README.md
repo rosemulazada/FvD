@@ -49,14 +49,14 @@ Aan deze technieken/punten wil ik werken:
 ### Dit ging goed/Heb ik geleerd:
 
 Korte omschrijving met plaatje(s)
-Ik heb eigenlijk geen delays gebruikt en heb gewoon met z-index het blokje voor de coin gezet. Ik heb alles gepositioneerd met relative/absolute en elk element omhoog laten bewegen met verschillende snelheden zodat het lijkt alsof de letter 'i' het blokje raakt waardoor het muntje uit het blokje komt. Ik heb op alle spans display: inline-block gezet zodat ik de letters kon animeren en heb de ::after figuren op andere spans gezet dan de letter 'i' zodat de ::after niet meebewoog.
+Ik heb eigenlijk geen delays gebruikt en heb gewoon met z-index het blokje voor de coin gezet. Ik heb alles gepositioneerd met relative/absolute en elk element omhoog laten bewegen met verschillende snelheden zodat het lijkt alsof de letter 'i' het blokje raakt waardoor het muntje uit het blokje komt. Ik heb op alle spans display: inline-block gezet zodat ik de letters kon animeren en heb de ::after figuren op andere spans gezet dan de letter 'i' zodat de ::after niet meebewoog. Ook is het me gelukt om met opacity de border te laten animeren.
 <img src="readme-images/Nintendo-1.png" width="375px" alt="top">
 
 ### Dit was lastig/Is niet gelukt:
 
-Ik wil graag alle letters animeren zonder hierbij de ::after mee te nemen, ik kreeg gelijk het idee om een span aan te maken met een witte tekstkleur of iets in die richting zodat ik een ::after kan maken en die kan animeren i.p.v. een ::after voor een span maken met een letter uit het merk erin. Maar ik weet niet zeker of dit handig is of überhaupt mag.
+Ik wil graag alle letters animeren zonder hierbij de ::after mee te nemen, ik kreeg gelijk het idee om een span aan te maken met een witte tekstkleur of iets in die richting zodat ik een ::after kan maken en die kan animeren i.p.v. een ::after voor een span maken met een letter uit het merk erin. Maar ik weet niet zeker of dit handig is of überhaupt mag. Ook wil ik leren hoe ik ervoor kan zorgen dat bijvoorbeeld de ::after nog langer op 100% blijft qua keyframes i.p.v. dat het gelijkt terugspringt naar de 0% positie.
 
-  <img src="readme-images/dummy-plaatje.svg" width="375px" alt="bummer">
+  <img src="readme-images/Nintendo-3.png" width="375px" alt="bummer">
 </details>
 
 ## Opdracht 2 plan

@@ -76,6 +76,21 @@ body {
 body h1 {
   position: relative;
   font-size: 3rem;
+  border: solid rgba(0,0,0,0) .5rem;
+  border-radius: 3rem;
+  padding: 1.5rem 1.5rem 1rem 1.5rem;
+  animation-name: border;
+  animation-duration: 3s;
+  animation-delay: 1.5s;
+  animation-iteration-count: 1;
+}
+
+@keyframes border {
+
+	100% {
+		opacity: 1;
+		border-color: red;
+	}
 }
 
 body h1 span {
@@ -115,8 +130,8 @@ body h1 span:nth-of-type(3)::after {
   align-items: center;
   content: "I";
   position: absolute;
-  top: -4.5rem;
-  left: 2.5rem;
+  top: -3rem;
+  left: 4rem;
 
   background: var(--color-block);
   color: var(--color-block);
@@ -165,9 +180,9 @@ body h1 span:nth-of-type(1)::after {
   background-color: var(--color-block);
   width: 4.2rem;
   height: 3.75rem;
-  top: -4.5rem;
+  top: -3rem;
   z-index: 1;
-  left: 1.5rem;
+  left: 3rem;
   animation-name: block-jump;
   animation-duration: 0.3s;
   animation-iteration-count: 1;
