@@ -3,55 +3,186 @@
 /*********/
 /* FONTS */
 /*********/
-@font-face {
-	font-family: 'eenfont';
+
+/* @font-face {
+	font-family: 'Pretendo';
 	src: url('../fonts/eenfont.woff2') format('woff2'),
 			 url('../fonts/eenfont.woff') format('woff');
 	font-weight: normal;
 	font-style: normal;
 
+} */
+
+@font-face {
+  font-family: "Mario";
+  src: url("../fonts/Super-Mario-Bros.woff2") format("woff2");
+  font-weight: normal;
+  font-style: normal;
 }
 
-
-
-
+@font-face {
+  font-family: "Pretendo";
+  src: url("../fonts/Pretendo.woff2") format("woff2");
+  font-weight: normal;
+  font-style: normal;
+}
 
 /**************/
 /* CSS REMEDY */
 /**************/
-*, *::after, *::before {
-  box-sizing:border-box;  
+*,
+*::after,
+*::before {
+  box-sizing: border-box;
 }
 
-button:not[disabled], summary {
-	cursor: pointer;
+button:not[disabled],
+summary {
+  cursor: pointer;
 }
-
-
-
-
 
 /*********************/
 /* CUSTOM PROPERTIES */
 /*********************/
 :root {
-	/* startje */
-	--color-text:#111;
-	--color-background:#eee;
+  /* startje */
+  --color-text: #111;
+  --color-background: #eee;
+
+  /* icoontjes */
+  --color-coin: #f8d648;
+  --color-coin-text: #eee;
+
+  --color-block: #f1a04c;
+  --color-block-left: #be6b26;
+  --color-block-right: #111;
 }
-
-
-
-
 
 /****************/
 /* JOUW STYLING */
 /****************/
 body {
-  font-family:eenfont, sans-serif;
-  color:var(--color-text);
-  background-color:var(--color-background);
+  font-family: "Pretendo", sans-serif;
+  color: var(--color-text);
+  background-color: var(--color-background);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100dvh;
 }
 
 /* jouw code */
 
+body h1 {
+  position: relative;
+  font-size: 3rem;
+}
+
+body h1 span {
+  display: inline-block;
+}
+
+body > h1 > span:nth-of-type(2) {
+  animation-name: jump;
+  animation-iteration-count: 1;
+  animation-duration: 0.3s;
+}
+
+@keyframes jump {
+  0% {
+    transform: translatey(0);
+  }
+
+  50% {
+    transform: translatey(-0.5em);
+  }
+
+  100% {
+    transform: translatey(0);
+  }
+}
+
+/* COIN */
+body h1 span:nth-of-type(3)::after {
+  font-family: sans-serif;
+  font-size: 1.5rem;
+  font-size: 2.5rem;
+  text-shadow: 0.125rem 0.125rem 0 var(--color-text),
+    -0.125rem -0.125rem 0 var(--color-block-left);
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  content: "I";
+  position: absolute;
+  top: -4.5rem;
+  left: 2.5rem;
+
+  background: var(--color-block);
+  color: var(--color-block);
+
+  width: 2rem;
+  height: 4rem;
+  /* transform: rotate(90deg); */
+  border-radius: 100rem;
+
+  animation-name: coin-jump;
+  animation-duration: 1.25s;
+  animation-iteration-count: 1;
+}
+
+@keyframes coin-jump {
+  0% {
+    transform: translatey(0);
+  }
+
+  75% {
+    transform: translateY(-6rem);
+  }
+
+  100% {
+    transform: translatey(-4.4rem);
+  }
+}
+
+/* BLOCK */
+
+body h1 span:nth-of-type(1)::after {
+  font-family: "Mario", sans-serif;
+  font-weight: 300;
+  font-size: 2.75rem;
+  text-shadow: 0.25rem 0.25rem 0 var(--color-block-right);
+  content: "?";
+  color: var(--color-block-left);
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-left: solid var(--color-block-left) 0.25rem;
+  border-right: solid var(--color-block-right) 0.25rem;
+  box-shadow: 0 -0.25rem 0 var(--color-block-left),
+    0 0.25rem 0 var(--color-block-right);
+  background-color: var(--color-block);
+  width: 4.2rem;
+  height: 3.75rem;
+  top: -4.5rem;
+  z-index: 1;
+  left: 1.5rem;
+  animation-name: block-jump;
+  animation-duration: 0.3s;
+  animation-iteration-count: 1;
+}
+
+@keyframes block-jump {
+  0% {
+    transform: translatey(0);
+  }
+
+  50% {
+    transform: translateY(-1rem);
+  }
+
+  100% {
+    transform: translatey(0);
+  }
+}
