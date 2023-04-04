@@ -58,6 +58,16 @@ summary {
   --color-block-right: #111;
 }
 
+@media (prefers-color-scheme: dark) {
+  :root {
+    --color-text: white;
+    --color-background: #000000;
+
+    /*icoontjes*/
+    --color-block-right: #3e3e3e;
+  }
+}
+
 /****************/
 /* JOUW STYLING */
 /****************/
@@ -75,8 +85,8 @@ body {
 
 body h1 {
   position: relative;
-  font-size: 3rem;
-  border: solid rgba(0,0,0,0) .5rem;
+  font-size: clamp(1rem, 2.5vw, 2rem);
+  border: solid rgba(0, 0, 0, 0) 0.5rem;
   border-radius: 3rem;
   padding: 1.5rem 1.5rem 1rem 1.5rem;
   animation-name: border;
@@ -86,11 +96,10 @@ body h1 {
 }
 
 @keyframes border {
-
-	100% {
-		opacity: 1;
-		border-color: red;
-	}
+  100% {
+    opacity: 1;
+    border-color: red;
+  }
 }
 
 body h1 span {

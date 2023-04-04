@@ -1,0 +1,58 @@
+/* CSS Document */
+
+/*********/
+/* FONTS */
+/*********/
+@font-face {
+  font-family: Circular;
+  src: url("../fonts/CircularStd-Book.otf") format("opentype");
+}
+
+@font-face {
+  font-family: Circular-Bold;
+  src: url("../fonts/CircularStd-Bold.otf") format("opentype");
+}
+
+/**************/
+/* CSS REMEDY */
+/**************/
+*,
+*::after,
+*::before {
+  box-sizing: border-box;
+}
+
+button:not[disabled],
+summary {
+  cursor: pointer;
+}
+
+/*********************/
+/* CUSTOM PROPERTIES */
+/*********************/
+:root {
+  /* startje */
+  --color-background: white;
+
+  /* dark mode */
+}
+
+/****************/
+/* JOUW STYLING */
+/****************/
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --color-background: black;
+  }
+}
+
+h1 {
+  font-family: circular-bold, sans-serif;
+}
+
+li {
+  list-style: none;
+  font-family: circular, sans-serif;
+  font-size: 1rem;
+}

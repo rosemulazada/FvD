@@ -13,8 +13,8 @@ Nb. Door _open_ toe te voegen aan een _details_ element kun je deze standaard op
 
 ## Bronnenlijst
 
-1. -bron 1-
-2. -bron 2-
+1. https://stackoverflow.com/questions/22534084/can-i-create-border-bottom-without-diagonal-corner
+2. https://stackoverflow.com/questions/6881045/css-animations-on-span
 3. -...-
 
 ## Opdracht 1 plan
