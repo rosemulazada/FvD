@@ -95,6 +95,8 @@ body h1 {
   animation-iteration-count: 1;
 }
 
+/* dit is een animatie voor de border om het nintendo logo heen en het verschijnt pas aan het eind.
+daarom ook alleen 100%. */
 @keyframes border {
   100% {
     opacity: 1;
@@ -102,9 +104,11 @@ body h1 {
   }
 }
 
+/*dit maakt het zodat we kunnen animeren met de spans*/
 body h1 span {
   display: inline-block;
 }
+
 
 body > h1 > span:nth-of-type(2) {
   animation-name: jump;
@@ -112,6 +116,7 @@ body > h1 > span:nth-of-type(2) {
   animation-duration: 0.3s;
 }
 
+/* deze animatie is voor de tweede span oftewel de letter i. deze springt omhoog zodat het het blokje van mario kan raken. */
 @keyframes jump {
   0% {
     transform: translatey(0);
@@ -126,7 +131,7 @@ body > h1 > span:nth-of-type(2) {
   }
 }
 
-/* COIN */
+/* dit is de code voor de coin. */
 body h1 span:nth-of-type(3)::after {
   font-family: sans-serif;
   font-size: 1.5rem;
@@ -155,6 +160,8 @@ body h1 span:nth-of-type(3)::after {
   animation-iteration-count: 1;
 }
 
+/*hierdoor laat ik de coin omhoog springen en zorg ik ervoor dat het niet stopt op dezelfde plek als 0%*/
+/*door de z-index die ik onderaan aan het blokje heb gegeven en de timing lijkt het net alsof het muntje uit het blokje komt zodra de 'i' het blokje aanraakt.*/
 @keyframes coin-jump {
   0% {
     transform: translatey(0);
@@ -170,7 +177,7 @@ body h1 span:nth-of-type(3)::after {
 }
 
 /* BLOCK */
-
+/*dit is de code voor het blokje.*/
 body h1 span:nth-of-type(1)::after {
   font-family: "Mario", sans-serif;
   font-weight: 300;
@@ -182,6 +189,7 @@ body h1 span:nth-of-type(1)::after {
   display: flex;
   justify-content: center;
   align-items: center;
+  /*met box-shadow maak ik de borders zodat het rechte lijnen zijn.*/
   border-left: solid var(--color-block-left) 0.25rem;
   border-right: solid var(--color-block-right) 0.25rem;
   box-shadow: 0 -0.25rem 0 var(--color-block-left),
@@ -190,6 +198,7 @@ body h1 span:nth-of-type(1)::after {
   width: 4.2rem;
   height: 3.75rem;
   top: -3rem;
+  /*het blokje krijgt een z-index zodat het voor het muntje staat en ik het zo kan laten lijken dat het uit het muntje te voorschijn komt.*/
   z-index: 1;
   left: 3rem;
   animation-name: block-jump;
@@ -197,6 +206,7 @@ body h1 span:nth-of-type(1)::after {
   animation-iteration-count: 1;
 }
 
+/*ook hierdoor springt het blokje omhoog. het is zo getimed dat het iets later dan de 'i' springt om zo de illusie te geven dat het geraakt wordt door die letter.*/
 @keyframes block-jump {
   0% {
     transform: translatey(0);

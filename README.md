@@ -15,7 +15,13 @@ Nb. Door _open_ toe te voegen aan een _details_ element kun je deze standaard op
 
 1. https://stackoverflow.com/questions/22534084/can-i-create-border-bottom-without-diagonal-corner
 2. https://stackoverflow.com/questions/6881045/css-animations-on-span
-3. -...-
+3. https://www.w3schools.com/jsref/jsref_localecompare.asp
+4. http://sortablejs.github.io/Sortable/
+5. https://font.gooova.com/fonts/14294/circular-std-font-family.html
+6. Niet gebruikt maar wel als reference: https://listjs.com/
+7. https://developer.mozilla.org/en-US/docs/Web/API/Node/nodeName
+8. https://www.freecodecamp.org/news/how-to-sort-alphabetically-in-javascript/
+9. https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/sort
 
 ## Opdracht 1 plan
 
@@ -72,10 +78,8 @@ Ik wil graag alle letters animeren zonder hierbij de ::after mee te nemen, ik kr
 
 Aan deze technieken/punten wil ik werken:
 
-- punt 1
-- punt 2
-- nog een punt
-- ...
+- Ik wil graag leren hoe ik zoveel mogelijk 1 functie kan schrijven die alles doet ipv verschillende die samen 1 doel berijken
+- Ik wil graag kijken naar nieuwe technieken ipv wat ik al ken.
 </details>
 
 ## Opdracht 2 test
@@ -83,27 +87,44 @@ Aan deze technieken/punten wil ik werken:
 <details>
   <summary>uitwerken na testen (week 7)</summary>
 
+Ik liep heel erg vast tijdens deze week, en heb later besloten om van case te veranderen. Om deze rede heb ik niet echt kunnen testen aangezien ik alleen CSS had en niks voor het belangrijkste deel waardoor het allemaal interactief moest worden, maar ik zal problemen opnoemen die ik heb ervaart bij mijn nieuwe case.
 Neem minimaal 5 bevindingen op:
 
 ### Bevinding 1:
 
-Omschrijving van wat er nog niet orde was (tekst en afbeeding(en)).
+Nummers werden twee keer toegevoegd aan de playlist terwijl dat niet logisch is 
 
 #### oplossing:
 
-Beschrijving hoe je het hebt hebt opgelost of als het niet gelukt is hoe je het zou oplossen (tekst en afbeeding(en)).
+<img src="readme-images/data.png" width="375px" alt="oplossing probleem 1">
+Ik heb data attributes toegevoegd waar ik later in een functie naar vraag. Er wordt hiermee in deze functie gekeken of het nummer al in de playlist staat en zo wel dan voegt hij het niet dubbel toe.
 
 ### Bevinding 2:
 
-Omschrijving van wat er nog niet orde was (tekst en afbeeding(en)).
+Ik kon mijn lists niet selecteren met alleen mijn toetsenbord. In plaats daarvan ging het elke individuele letter oplezen uit de zin. 
 
 #### oplossing:
-
-Beschrijving hoe je het hebt hebt opgelost of als het niet gelukt is hoe je het zou oplossen (tekst en afbeeding(en)).
+<img src="readme-images/selectedlists.png" width="375px" alt="oplossing probleem 2">
+Ik heb de volgende attributes toegevoegd (tabindex, aria-selected, role) zodat de screenreader herkent dat erop gefocused kan worden.
 
 ### Bevinding 3:
+<img src="readme-images/offscreen.png" width="375px" alt="oplossing probleem 3">
+Als je op mobile maar 1 nummer hebt toegevoegd wordt de list automatisch gefocused waardoor je niet op remove kunt klikken. De button gaat offscreen.
+Dit probleem heb ik nogsteeds.
 
-...
+### Bevinding 4:
+Als ik op een button klik om te sorteren en vervolgens op de volgende knop klik krijgen beide knoppen dezelfde stijl.
+
+#### oplossing:
+<img src="readme-images/buttonstyles.png" width="375px" alt="oplossing probleem 4">
+Ik heb deze code toegevoegd aan beide buttons om de stijl toe te voegen aan de geklikte knop en te verwijderen van de andere. Dan krijgt de niet geselecteerde knop de default stijl terug.
+
+### Bevinding 5:
+Ik had behalve het sorteren met a-z en z-a niks anders om te ordenen.
+
+#### oplossing:
+<img src="readme-images/drag.png" width="375px" alt="oplossing probleem 5">
+Ik heb de sortableJS library gekoppelt aan mijn code waardoor ik nu ook kan slepen.
 
 </details>
 
@@ -114,17 +135,21 @@ Beschrijving hoe je het hebt hebt opgelost of als het niet gelukt is hoe je het 
 
 ### Je uitkomst - karakteristiek screenshot(s):
 
-  <img src="readme-images/dummy-plaatje.svg" width="375px" alt="uitkomst opdracht 2">
+  <img src="readme-images/eindSS.png" width="375px" alt="uitkomst opdracht 2">
 
 ### Dit ging goed/Heb ik geleerd:
 
 Korte omschrijving met plaatje(s)
 
-  <img src="readme-images/dummy-plaatje.svg" width="375px" alt="top">
+
+  <img src="readme-images/sortable.png" width="375px" alt="top">
+Hoe eenvoudig het eigenlijk is om libraries te gebruiken.. ik vond dit eerst best wel intimiderend maar toen ik echt ging opzoeken hoe ik dit kon doen was het geen probleem.
 
 ### Dit was lastig/Is niet gelukt:
 
 Korte omschrijving met plaatje(s)
 
-  <img src="readme-images/dummy-plaatje.svg" width="375px" alt="bummer">
+  <img src="readme-images/offscreen.png" width="375px" alt="bummer">
+  Het is me nogsteeds niet gelukt om dit probleem op te lossen, ook niet met overflow en media queries. Dit is jammer want het maakt het moeilijker om op mobile nummers te verwijderen.
+
 </details>
