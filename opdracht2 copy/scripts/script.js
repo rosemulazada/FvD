@@ -1,118 +1,136 @@
-// JavaScript Document
-console.log("test123");
+console.log('test')
+var mijnPlaylist = document.querySelector('section:nth-of-type(2) >section:nth-of-type(2) > ul');
+var voegNummerButtons = document.querySelectorAll('section:nth-of-type(2) >section:nth-of-type(1) > ul > li > button:last-of-type');
+var mijnPlaylist2 = document.querySelector('section:nth-of-type(2) > section:nth-of-type(2) > ul');
+Sortable.create(mijnPlaylist2);
 
-// hier maak ik een functie aan waarmee ik de lijst kan sorteren van A-Z
-function vanAnaarZsorteren() {
-  // ik maak een variabele aan, hierin sla ik de allereerste ul op
-    var ulOne = document.querySelector("ul");
-    // in deze variabele sla ik alle list elementen in deze ul op. ik gebruik array.from() om een array te maken van alle list elementen.
-    //dit doe ik zodat ik ze straks kan sorteren
-     var lijstEen = Array.from(ulOne.querySelectorAll("li"));
-   
-     // var eindlijst is een variabele waarin de gesorteerde versie van lijsteen wordt opgeslagen.
-     // a en b staan voor de twee elementen die telkens vergeleken worden zodat er gesorteerd kan worden
-     // met textcontent bekijken we de inhoud van a en b (dus telkens een ander list element uit onze array)
-     // met toUpperCase zorgen we ervoor dat er niet wordt gekeken naar hoofdletters wanneer er gesorteerd wordt
-     var eindLijst = lijstEen.sort((a, b) => {
-       var lijstA = a.textContent.toUpperCase();
-       var lijstB = b.textContent.toUpperCase();
-       // localcompare bekijkt welk van de items die vergeleken worden eerst moet komen. als de eerste string voor de tweede komt krijg je een negatieve waarde terug, andersom positief en als ze gelijk zijn krijg je 0.
-       // hiermee kunnen we dus de volgorde bepalen
-       return lijstA.localeCompare(lijstB); 
-     });
-   //hier zetten we de html content van de ul naar niks. hierdoor worden de list elementen verwijderd.
-     ulOne.innerHTML = "";
-     // uiteindelijk wordt de waarde van de uiteindelijke lijst te stellen. 
-     // appendChild voegt dus de gesorteerde lijst elementen vanuit de eindLijst variabele toe aan de parent, oftewel de ul die we hebben opgeslagen in ulOne.
-     //forEach wordt dan gebruikt om ook elke li toe te voegen
-     eindLijst.forEach((li) => ulOne.appendChild(li));
-   }
+console.log(mijnPlaylist);
+console.log(voegNummerButtons);
+console.log(mijnPlaylist2);
 
-//maak variabele aan voor button en log om te zien of het wordt aangesproken
-//herhaal voor tweede button
-var buttonOne = document.querySelector('body>button:first-of-type');
-console.log(buttonOne)
-buttonTwo = document.querySelector('body>button:nth-of-type(2)');
-console.log(buttonTwo)
+var huidigeAudioSpeler = null;
+var toegevoegdeNummers = [];
 
-//deze eventlistener luistert of er wordt geklikt op de eerste button buttonone.
-//zo wel, voer dan functie vananaarzsorteren uit
-//daarna heb je nog een eventlistener die luistert of er geklikt wordt en die veranderd dan de achtergrondkleur van de geklikte button naar groen
-//de achtergrondkleur van de tweede button wordt verwijderd als er al op was geklikt en het dus ook groen was. hierdoor krijgt het zijn default kleur terug en heb je niet twee actieve groene buttons
-buttonOne.addEventListener('click', vanAnaarZsorteren)
-buttonOne.addEventListener('click', function() {
-    buttonOne.style.background = 'var(--color-highlight-button)';
-    buttonTwo.style.background = '';
-  });
-
-
- 
-function vanZnaarAsorteren() {
-  var ulTwo = document.querySelector("ul");
-  var lijstTwee = Array.from(ulTwo.querySelectorAll("li"));
-  
-  var eindLijst = lijstTwee.sort((a, b) => {
-    var lijstA = a.textContent.toUpperCase();
-    var lijstB = b.textContent.toUpperCase();
-    // het enige verschil met de functie vanAnaarZsorteren is dat je hieronder de volgorde van de vergelijking omwisselt.
-    // van daar ook van Z-A!
-    return lijstB.localeCompare(lijstA); 
-  });
-  
-  ulTwo.innerHTML = "";
-  eindLijst.forEach((li) => ulTwo.appendChild(li));
+function stopMuziekBehalveEen(audioPlayer) {
+    var audioSpelers = document.querySelectorAll('audio');
+    audioSpelers.forEach((player) => {
+        if (player !== audioPlayer) {
+            player.pause();
+        }
+    });
 }
 
-//zelfde verhaal als bovenaan, alleen natuurlijk met de buttons omgedraaid
-buttonTwo.addEventListener('click', vanZnaarAsorteren);
-buttonTwo.addEventListener('click', function() {
-    buttonOne.style.background = '';
-    buttonTwo.style.background = 'var(--color-highlight-button)';
-  });
+voegNummerButtons.forEach((toevoegButton) => {
+    toevoegButton.addEventListener("click", () => {
+        var oorspronkelijkeItem = toevoegButton.parentElement;
+        var oorspronkelijkeAudioSpeler = oorspronkelijkeItem.querySelectorAll("audio")[0];
+        var oorspronkelijkeSrc = oorspronkelijkeAudioSpeler.getAttribute("src");
+        var titelNummer = oorspronkelijkeSrc.substring(oorspronkelijkeSrc.lastIndexOf('/') + 1,
+            oorspronkelijkeSrc.lastIndexOf('-preview'));
 
 
+        if (toegevoegdeNummers.includes(titelNummer)) {
+            alert('This song has already been added to the playlist!');
+            return;
+        }
 
 
-// dit is de tweede lijst met beschikbare nummers waaruit je kunt kiezen
-var beschikbaar = document.querySelector('body>ul:nth-of-type(2)');
-//dit is de eerste lijst die jij zelf kunt samenstellen
-var mijnPlaylist = document.querySelector('body>ul:first-of-type')
+        toegevoegdeNummers.push(titelNummer);
 
-//voeg een eventlistener toe aan de lijst van beschikbare nummers. 
-//deze luistert naar een click event op de tweede ul
-// we hebben event nodig om te kijken op welk element er geklikt is uit de ul, dus welke van de vele li's
-//als er geklikt wordt, voer dan de volgende functie uit..
-beschikbaar.addEventListener('click', function(event) {
-   // deze code wordt alleen uitgevoerd als het element dat geklikt is een list element is.
-  // er staat, als er geklikt wordt en de naam van het html element dat geklikt is is LI, voer het dan uit
-  if (event.target && event.target.nodeName === 'LI') {
-    // de attribute data nummer van de geklikte li wordt opgeslagen in deze variabele
-    var nummerData = event.target.getAttribute('data-nummer');
-     // hier wordt gekeken of het gekozen nummer al in jouw playlist staat.
-    // alleen dan wordt de code verder uitgevoerd
-    if (!mijnPlaylist.querySelector('[data-nummer="' + nummerData + '"]')) {
-       // het gekozen nummer wordt gekopieerd en opgeslagen in deze variabele gekozennummer
-      var gekozenNummer = event.target.cloneNode(true);
-      // in de variabele verwijderen wordt een button aangemaakt bij het toebehorende gekopieerde element maar voegt het nog niet toe aan de DOM
-      var verwijderen = document.createElement('button');
-       // hierbij wordt de tekst die in de button staat aangewezen
-      verwijderen.innerText = 'Remove';
-      //als er op de remove knop wordt geklikt, voer dan deze functie uit
-      verwijderen.addEventListener('click', function(event) {
-        //verwijder het nummer dat gekozen is, oftewel de parent van de button, dus de gekopieerde list
-        // removechild is dus het tegenovergestelde van appendchild
-        mijnPlaylist.removeChild(event.target.parentNode);
-      });
-      // hierdoor wordt de remove knop toegevoegd aan de DOM
-      gekozenNummer.appendChild(verwijderen);
+        var oorspronkelijkeSpeelButton = oorspronkelijkeItem.querySelectorAll('button')[0];
 
-      // voeg het gekopieerde gekozen nummer toe aan jouw playlist
-      mijnPlaylist.appendChild(gekozenNummer);
-    }
-  }
+        var copyItem = oorspronkelijkeItem.cloneNode(true);
+        var copyAudiospeler = copyItem.querySelectorAll("audio")[0];
+        var copySpeelButton = copyItem.querySelectorAll('button')[0];
+
+        var oorspronkelijkeSrc = oorspronkelijkeAudioSpeler.getAttribute("src");
+        var titelNummer = oorspronkelijkeSrc.substring(oorspronkelijkeSrc.lastIndexOf('/') + 1,
+            oorspronkelijkeSrc.lastIndexOf('-preview'));
+
+        copyAudiospeler.setAttribute("src", "../opdracht2 copy/music-files/" + titelNummer + "-src.mp3");
+
+
+        function stopMuziek() {
+            stopMuziekBehalveEen(copyAudiospeler);
+        }
+
+        oorspronkelijkeSpeelButton.addEventListener("click", () => {
+            stopMuziekBehalveEen(oorspronkelijkeAudioSpeler);
+            oorspronkelijkeAudioSpeler.play();
+            huidigeAudioSpeler = oorspronkelijkeAudioSpeler;
+        });
+
+        copySpeelButton.addEventListener("click", () => {
+            stopMuziekBehalveEen(copyAudiospeler);
+            copyAudiospeler.play();
+            huidigeAudioSpeler = copyAudiospeler;
+        });
+
+        var action = copySpeelButton.getAttribute("data-action");
+        if (action === "play-preview") {
+            copySpeelButton.addEventListener("click", () => {
+                stopMuziek();
+                var audioSpeler = copyItem.querySelectorAll("audio")[0];
+                audioPlayer.play();
+            });
+        }
+
+        copyItem.querySelector('button[data-action="add"]').remove();
+        copySpeelButton.innerHTML = 'Play';
+        mijnPlaylist2.appendChild(copyItem);
+    });
 });
 
-//gebruik sortableJS op de playlist om drag and drop te enablen. keyboard; true zorgt ervoor dat het ook (voor zover mogelijk) met het toetsenbord te bedienen is
-new Sortable(mijnPlaylist, {
-  keyboard: true
+
+var speelPreviewButtons = document.querySelectorAll('section:nth-of-type(2) >section:nth-of-type(1) > ul > li > button:first-of-type');
+speelPreviewButtons.forEach((playButton) => {
+    playButton.addEventListener("click", () => {
+        var audioSpeler = playButton.parentElement.querySelectorAll("audio")[0];
+        audioSpeler.play();
+        stopMuziekBehalveEen(audioSpeler);
+        huidigeAudioSpeler = audioSpeler;
+    });
 });
+
+var speelButtons = document.querySelectorAll('section:nth-of-type(2) >section:nth-of-type(2) > ul > li > button:first-of-type');
+speelButtons.forEach((playButton) => {
+    playButton.addEventListener("click", () => {
+        var audioSpeler = playButton.previousElementSibling;
+        audioSpeler.play();
+        stopMuziekBehalveEen(audioSpeler);
+        huidigeAudioSpeler = audioSpeler;
+    });
+});
+
+
+var tabOneButton = document.querySelector('section:first-of-type>section>button:first-of-type');
+var tabTwoButton = document.querySelector('section:first-of-type>section>button:nth-of-type(2)');
+var tabOneContent = document.querySelector('section:nth-of-type(2) > section:first-of-type');
+var tabTwoContent = document.querySelector('section:nth-of-type(2) > section:nth-of-type(2)');
+console.log(tabOneButton);
+console.log(tabTwoButton)
+console.log(tabOneContent)
+console.log(tabTwoContent)
+tabTwoButton.addEventListener('click', function () {
+    tabOneContent.style.display = 'none';
+    tabTwoContent.style.display = 'block';
+
+    tabTwoButton.style.fontWeight = 'bold';
+    tabTwoButton.style.borderBottom = '2px solid white';
+    tabTwoButton.style.background = 'var(--color-highlight-button)';
+    tabOneButton.style.fontWeight = 'none';
+    tabOneButton.style.borderBottom = 'none';
+    tabOneButton.style.background = 'none';
+})
+
+tabOneButton.addEventListener('click', function () {
+    tabTwoContent.style.display = 'none';
+    tabOneContent.style.display = 'block';
+
+    tabOneButton.style.fontWeight = 'bold';
+    tabOneButton.style.borderBottom = '2px solid white';
+    tabOneButton.style.background = 'var(--color-highlight-button)';
+    tabTwoButton.style.fontWeight = 'none';
+    tabTwoButton.style.borderBottom = 'none';
+    tabTwoButton.style.background = 'var(--color-highlight)';
+})

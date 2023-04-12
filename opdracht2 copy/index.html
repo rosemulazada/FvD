@@ -1,52 +1,97 @@
 <!DOCTYPE html>
-<html lang="nl">
-  <head>
-    <!-- importeer de library-->
-    <script src="https://cdn.jsdelivr.net/npm/sortablejs@1.14.0/Sortable.min.js"></script>
-    <meta charset="UTF-8" />
-    <meta name="author" content="jouw naam" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
+<html lang="en">
 
-    <title>Opdracht 2: Interactie galore - Frontend voor Designers</title>
+<head>
+  <meta charset="UTF-8">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Sortable/1.13.0/Sortable.min.js"></script>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="styles/style.css">
+  <title>Muziek speler</title>
+</head>
 
-    <link href="styles/style.css" rel="stylesheet" />
-    <link rel="icon" type="image/svg+xml" href="images/favicon.svg" />
-  </head>
-
-  <body>
+<body>
+  <section>
     <section>
-      <h1>Your songs.</h1>
-      <section>
-        <button tabindex="0" role="button" aria-selected="false">Sort A-Z</button>
-        <button tabindex="0" role="button" aria-selected="false">Sort Z-A</button>
-        <button></button>
-      </section>
-        
-        <ul>
-
-        </ul>
+      <button>Tab #1</button>
+      <button>Tab #2</button>
     </section>
-    
+  </section>
+
+  <section>
+    <section>
+      <h1>Choose songs</h1>
+      <ul>
+        <li>
+          <h3>I Been Drinking - Future</h3>
+          <audio src="/opdracht2 copy/music-files/song-1-preview.mp3"
+            data-src="../opdracht2 copy/music-files/song-1-preview.mp3"></audio>
+          <button data-action="play-preview">Play Preview</button>
+          <button data-action="add" data-preview="../opdracht2 copy/music-files/song-1-preview.mp3"
+            data-src="../opdracht2 copy/music-files/song-1-preview.mp3">Add
+            Song</button>
+        </li>
+        <li>
+          <h3>Song Title 2</h3>
+          <audio src="/music-files/song-2-preview.mp3" data-src="/music-files/song-2-preview.mp3"></audio>
+          <button data-action="play-preview">Play Preview</button>
+          <button data-action="add" data-preview="/music-files/song-2-preview.mp3"
+            data-src="/music-files/song-2.mp3">Add
+            Song</button>
+        </li>
+        <li>
+          <h3>Song Title 3</h3>
+          <audio src="/music-files/song-3-preview.mp3" data-src="/music-files/song-3-preview.mp3"></audio>
+          <button data-action="play-preview">Play Preview</button>
+          <button data-action="add" data-preview="music-files/song-3-preview.mp3" data-src="music-files/song-3.mp3">Add
+            Song</button>
+        </li>
+        <li>
+          <h3>Song Title 4</h3>
+          <audio src="music-files/song-3-preview.mp3" data-src="music-files/song-3-preview.mp3"></audio>
+          <button data-action="play-preview">Play Preview</button>
+          <button data-action="add" data-preview="music-files/song-3-preview.mp3" data-src="music-files/song-3.mp3">Add
+            Song</button>
+        </li>
+        <li>
+          <h3>Song Title 5</h3>
+          <audio src="music-files/song-3-preview.mp3" data-src="music-files/song-3-preview.mp3"></audio>
+          <button data-action="play-preview">Play Preview</button>
+          <button data-action="add" data-preview="music-files/song-3-preview.mp3" data-src="music-files/song-3.mp3">Add
+            Song</button>
+        </li>
+        <li>
+          <h3>Song Title 6</h3>
+          <audio src="music-files/song-3-preview.mp3" data-src="music-files/song-3-preview.mp3"></audio>
+          <button data-action="play-preview">Play Preview</button>
+          <button data-action="add" data-preview="music-files/song-3-preview.mp3" data-src="music-files/song-3.mp3">Add
+            Song</button>
+        </li>
+        <li>
+          <h3>Song Title 7</h3>
+          <audio src="music-files/song-3-preview.mp3" data-src="music-files/song-3-preview.mp3"></audio>
+          <button data-action="play-preview">Play Preview</button>
+          <button data-action="add" data-preview="music-files/song-3-preview.mp3" data-src="music-files/song-3.mp3">Add
+            Song</button>
+        </li>
+        <li>
+          <h3>Song Title 8</h3>
+          <audio src="music-files/song-3-preview.mp3" data-src="music-files/song-3-preview.mp3"></audio>
+          <button data-action="play-preview">Play Preview</button>
+          <button data-action="add" data-preview="music-files/song-3-preview.mp3" data-src="music-files/song-3.mp3">Add
+            Song</button>
+        </li>
+      </ul>
+    </section>
 
     <section>
-      <h1>Songs to choose from</h2>
-        <!--button in li, audio element-->
-        <!--animation end event, eventlistener ended-->
-          <ul>
-            <li role="button" aria-selected="false" data-nummer="1">I Been Drinking - Future</li>
-            <li role="button" aria-selected="false" data-nummer="2">Sugar (feat. Wynter) - Flo Rida, Wynter Gordon</li>
-            <li role="button" aria-selected="false" data-nummer="3">I Don't Want Her (feat. Problem) - Eric Bellinger</li>
-            <li role="button" aria-selected="false"data-nummer="4">Slow Motion - Trey Songz</li>
-            <li role="button" aria-selected="false"data-nummer="5">Excitement - Trippie Redd, PARTYNEXTDOOR</li>
-            <li role="button" aria-selected="false"data-nummerg="6">Say It - Tory Lanez</li>
-            <li role="button" aria-selected="false"data-nummer="7">In Ha Mood - Ice Spice</li>
-            <li role="button" aria-selected="false"data-nummer="8">20 Min - Lil Uzi Ver</li>
-            <li role="button" aria-selected="false"data-nummer="9">Traphouse - Tory Lanez, Nyce</li>
-            <li role="button" aria-selected="false"data-nummer="10">Young Patron - Leafs</li>
-
-          </ul>
+      <h1>My playlist</h1>
+      <button>Play all</button>
+      <ul></ul>
     </section>
-    
-    <script defer src="scripts/script.js"></script>
-  </body>
+  </section>
+  <script src="../opdracht2 copy/scripts/script.js"></script>
+
+</body>
+
 </html>

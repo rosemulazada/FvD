@@ -1,130 +1,193 @@
-/* CSS Document */
+ /* CSS Document */
 
-/*********/
-/* FONTS */
-/*********/
-@font-face {
-  font-family: Circular;
-  src: url("../fonts/CircularStd-Book.otf") format("opentype");
-}
+ /*********/
+ /* FONTS */
+ /*********/
+ @font-face {
+   font-family: Circular;
+   src: url("../fonts/CircularStd-Book.otf") format("opentype");
+ }
 
-@font-face {
-  font-family: Circular-Bold;
-  src: url("../fonts/CircularStd-Bold.otf") format("opentype");
-}
+ @font-face {
+   font-family: Circular-Bold;
+   src: url("../fonts/CircularStd-Bold.otf") format("opentype");
+ }
 
-/**************/
-/* CSS REMEDY */
-/**************/
-*,
-*::after,
-*::before {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-}
+ /**************/
+ /* CSS REMEDY */
+ /**************/
+ *,
+ *::after,
+ *::before {
+   box-sizing: border-box;
+   margin: 0;
+   padding: 0;
+ }
 
-button:not([disabled]),
-summary {
-  cursor: pointer;
-}
+ button:not([disabled]),
+ summary {
+   cursor: pointer;
+ }
 
-/*********************/
-/* CUSTOM PROPERTIES */
-/*********************/
-:root {
-  /* startje */
-  --color-background: white;
-  --color-text-most: #111;
-  --color-text-button: #535353;
-  --color-highlight: #f2f2f2;
+ /*********************/
+ /* CUSTOM PROPERTIES */
+ /*********************/
+ :root {
+   /* startje */
+   --color-background: white;
+   --color-text-most: #111;
+   --color-text-button: #535353;
+   --color-highlight: #f2f2f2;
 
-  --color-highlight-button: #1db954;
-  --color-text-button-highlight: #eee;
-}
+   --color-highlight-button: #1db954;
+   --color-text-button-highlight: #eee;
+ }
 
-/****************/
-/* JOUW STYLING */
-/****************/
+ @media (prefers-color-scheme: dark) {
+   :root {
+     --color-background: #181818;
+     --color-text-most: #eee;
+     --color-highlight: #302c2c;
+     --color-text-button: #eee;
+   }
 
-body {
-  background-color: var(--color-background);
-  color: var(--color-text-most);
-  display: block;
-  min-width: fit-content;
-  margin: 1rem;
-}
+ }
 
-h1,
-h2 {
-  font-family: circular-bold, sans-serif;
-  margin: 2rem 1rem 0;
-  margin-bottom: 1.25rem;
-}
+ /****************/
+ /* JOUW STYLING */
+ /****************/
 
-li {
-  list-style: none;
-  font-family: circular, sans-serif;
-  font-size: 1rem;
-  padding: 1rem;
+ body {
+   font-family: circular, sans-serif;
+   background-color: var(--color-background);
+ }
 
-  max-width: 30em;
-}
+ h1 {
+   margin-bottom: 1rem;
+ }
 
-li:not(:last-of-type) {
-  margin-bottom: 0.5rem;
-}
+ h1,
+ h3 {
+   color: var(--color-text-most);
+ }
 
-ul {
-  margin-top: 1rem;
-}
+ h3 {
+   font-size: 1rem;
+   margin-bottom: .75rem;
+ }
 
-li:hover {
-  background-color: var(--color-highlight);
-  /* width: 30rem; */
-  border-radius: 0.5rem;
-  /* padding: 1rem; */
-  /* margin-left: -1rem; */
-}
+ li {
+   margin-bottom: 1rem;
+   padding: .5rem;
+ }
 
-button {
-  font-family: circular, sans-serif;
-  background-color: var(--color-highlight);
-  color: var(--color-text-button);
-  border-radius: 1rem;
-  border: none;
-  padding: 0.5rem 1.5rem;
-  margin-left: 0.5rem;
-}
+ button {
+   font-family: circular, sans-serif;
+   background-color: var(--color-highlight);
+   color: var(--color-text-button);
+   border-radius: 1rem;
+   border: none;
+   padding: 0.5rem 1.5rem;
+   margin-left: 0.5rem;
+ }
 
-button:hover,
-button:focus {
-  color: var(--color-text-button-highlight);
-  background: var(--color-highlight-button);
-}
+ li:hover {
+   background-color: var(--color-highlight);
+   /* width: 30rem; */
+   border-radius: 0.5rem;
+   padding: .5rem;
+   /* margin-left: -1rem; */
+ }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --color-background: #181818;
-    --color-text-most: #eee;
-    --color-highlight: #302c2c;
-    --color-text-button: #eee;
-  }
+ li:hover button:hover {
+   background: var(--color-highlight-button);
+ }
 
-  /* li:hover {
-    background-color: var(--color-highlight);
-    width: 30rem;
-    border-radius: 0.5rem;
-    padding: 1rem;
-    margin-left: -1rem;
-  } */
-}
+ li:hover button {
+   background: var(--color-background)
+ }
 
-/* @media (max-width: 600px) {
-  body {
-    overflow-x: hidden;
-    padding-right: 20px;
-    overflow-y: auto;
-    width: 12rem;
-  }
-} */
+ button:hover,
+ button:focus {
+   color: var(--color-text-button-highlight);
+   background: var(--color-highlight-button);
+ }
+
+ @media only screen and (min-width: 768px) {
+   * {
+     margin: 0;
+     padding: 0;
+     box-sizing: border-box;
+   }
+
+   section:nth-of-type(2)>section {
+     display: block !important;
+   }
+
+   section:first-of-type>section {
+     display: none;
+   }
+
+   body {
+     display: flex;
+     flex-direction: column;
+     justify-content: center;
+     align-items: center;
+     height: 100dvh;
+   }
+
+   li {
+     list-style-type: none;
+   }
+
+   section:nth-of-type(2) {
+     display: flex;
+     flex-direction: row;
+     justify-content: center;
+     gap: 3rem;
+   }
+
+   section:first-of-type {
+     display: flex;
+     justify-content: center;
+     gap: .5rem;
+   }
+ }
+
+ @media only screen and (max-width: 768px) {
+   body {
+     display: flex;
+     flex-direction: column;
+     justify-content: center;
+     align-items: center;
+     height: 100dvh;
+   }
+
+   li {
+     list-style-type: none;
+   }
+
+   section:nth-of-type(2)>section:first-of-type {
+     display: flex;
+     flex-direction: column;
+   }
+
+   section:nth-of-type(2)>section:last-of-type {
+     display: none;
+   }
+
+   h1 {
+     font-size: 1rem;
+     margin-top: 1rem;
+   }
+
+   h3 {
+     font-size: .75rem;
+   }
+
+   li {
+     margin-bottom: 1rem;
+     padding: .2rem;
+   }
+
+ }
