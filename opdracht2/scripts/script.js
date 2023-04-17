@@ -75,9 +75,17 @@ voegNummerButtons.forEach((toevoegButton) => {
             });
         }
 
-        copyItem.querySelector('button[data-action="add"]').remove();
+        var removeButton = document.createElement("button");
+        removeButton.innerHTML = "Remove";
+        removeButton.addEventListener("click", () => {
+            removeButton.parentElement.remove();
+            toegevoegdeNummers = [];
+        });
+
         copySpeelButton.innerHTML = 'Play';
         mijnPlaylist2.appendChild(copyItem);
+        copyItem.appendChild(removeButton);
+        copyItem.querySelector('button[data-action="add"]').remove();
     });
 });
 
@@ -108,9 +116,9 @@ var tabTwoButton = document.querySelector('section:first-of-type>section>button:
 var tabOneContent = document.querySelector('section:nth-of-type(2) > section:first-of-type');
 var tabTwoContent = document.querySelector('section:nth-of-type(2) > section:nth-of-type(2)');
 console.log(tabOneButton);
-console.log(tabTwoButton)
-console.log(tabOneContent)
-console.log(tabTwoContent)
+console.log(tabTwoButton);
+console.log(tabOneContent);
+console.log(tabTwoContent);
 
 tabTwoButton.addEventListener('click', function () {
     tabTwoButton.classList.add('activeButton');
@@ -118,7 +126,7 @@ tabTwoButton.addEventListener('click', function () {
 
     tabTwoContent.style.display = 'block';
     tabOneContent.style.display = 'none';
-})
+});
 
 tabOneButton.addEventListener('click', function () {
     tabTwoButton.classList.remove('activeButton');
@@ -126,4 +134,11 @@ tabOneButton.addEventListener('click', function () {
 
     tabTwoContent.style.display = 'none';
     tabOneContent.style.display = 'block';
-})
+});
+
+// toegepaste feedback:
+// class ipv .style method voor navigation
+// remove button
+// geen spatie in de folder meer
+
+// nog doen; maak van 'play' => 'pause'
