@@ -111,26 +111,19 @@ console.log(tabOneButton);
 console.log(tabTwoButton)
 console.log(tabOneContent)
 console.log(tabTwoContent)
-tabTwoButton.addEventListener('click', function () {
-    tabOneContent.style.display = 'none';
-    tabTwoContent.style.display = 'block';
 
-    tabTwoButton.style.fontWeight = 'bold';
-    tabTwoButton.style.borderBottom = '2px solid white';
-    tabTwoButton.style.background = 'var(--color-highlight-button)';
-    tabOneButton.style.fontWeight = 'none';
-    tabOneButton.style.borderBottom = 'none';
-    tabOneButton.style.background = 'none';
+tabTwoButton.addEventListener('click', function () {
+    tabTwoButton.classList.add('activeButton');
+    tabOneButton.classList.remove('activeButton')
+
+    tabTwoContent.style.display = 'block';
+    tabOneContent.style.display = 'none';
 })
 
 tabOneButton.addEventListener('click', function () {
+    tabTwoButton.classList.remove('activeButton');
+    tabOneButton.classList.add('activeButton')
+
     tabTwoContent.style.display = 'none';
     tabOneContent.style.display = 'block';
-
-    tabOneButton.style.fontWeight = 'bold';
-    tabOneButton.style.borderBottom = '2px solid white';
-    tabOneButton.style.background = 'var(--color-highlight-button)';
-    tabTwoButton.style.fontWeight = 'none';
-    tabTwoButton.style.borderBottom = 'none';
-    tabTwoButton.style.background = 'var(--color-highlight)';
 })

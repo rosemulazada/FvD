@@ -113,6 +113,20 @@
    background: var(--color-highlight-button);
  }
 
+ ul > li:first-of-type {
+  margin-top: 1rem;
+}
+
+ .activeButton {
+    font-weight: bold;
+    border-bottom: 2px solid white;
+    background: var(--color-highlight-button)
+ }
+
+.inactiveButton {
+  display: none;
+}
+
  @media only screen and (min-width: 768px) {
    * {
      margin: 0;
@@ -160,7 +174,8 @@
      flex-direction: column;
      justify-content: center;
      align-items: center;
-     height: 100dvh;
+     /* height: 100dvh; */
+     margin-top: 2rem;
    }
 
    li {
@@ -191,3 +206,4 @@
    }
 
  }
+
