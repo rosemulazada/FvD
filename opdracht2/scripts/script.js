@@ -91,16 +91,33 @@ voegNummerButtons.forEach((toevoegButton) => {
 
 
 var speelPreviewButtons = document.querySelectorAll('section:nth-of-type(2) >section:nth-of-type(1) > ul > li > button:first-of-type');
+// gebruikt var huidigeaudiospeler = null
+// 'pause preview' gaat alleen terug naar 'play preview' als je op een nummer klikt binnen dezelfde lijst
+// moet 1 code schrijven voor speel preview buttons en speel buttons zodat ik dat wel werkend kan krijgen
+
 speelPreviewButtons.forEach((playButton) => {
     playButton.addEventListener("click", () => {
         var audioSpeler = playButton.parentElement.querySelectorAll("audio")[0];
-        audioSpeler.play();
-        stopMuziekBehalveEen(audioSpeler);
-        huidigeAudioSpeler = audioSpeler;
+        if (audioSpeler.paused) {
+            if (huidigeAudioSpeler !== null) {
+                huidigeAudioSpeler.pause();
+                var huidigePlayButton = huidigeAudioSpeler.parentElement.querySelector("button:first-of-type");
+                huidigePlayButton.innerHTML = "Play Preview";
+            }
+            audioSpeler.currentTime = 0;
+            audioSpeler.play();
+            huidigeAudioSpeler = audioSpeler;
+            playButton.innerHTML = "Pause Preview";
+        } else {
+            audioSpeler.pause();
+            playButton.innerHTML = "Play Preview";
+        }
     });
 });
 
-var speelButtons = document.querySelectorAll('section:nth-of-type(2) >section:nth-of-type(2) > ul > li > button:first-of-type');
+
+// pause werkt niet op cloned list omdat die buttons niet goed zijn geselecteerd. maar hoe..?
+var speelButtons = document.querySelectorAll('section:nth-of-type(2) >section:nth-of-type(2) > ul > li > button:first-of-type')
 speelButtons.forEach((playButton) => {
     playButton.addEventListener("click", () => {
         var audioSpeler = playButton.previousElementSibling;
@@ -110,6 +127,14 @@ speelButtons.forEach((playButton) => {
     });
 });
 
+// var playAllButton = document.querySelector('body > section:nth-of-type(2) > section:nth-of-type(2) > button:first-of-type');
+// playAllButton.addEventListener('click', () => {
+//     var playlistItems = mijnPlaylist2.querySelectorAll("li");
+//     for (var i = 0; i < playlistItems.length; i++) {
+//         var audioPlayer = playlistItems[i].querySelector('audio');
+//         audioPlayer.play();
+//     }
+// });
 
 var tabOneButton = document.querySelector('section:first-of-type>section>button:first-of-type');
 var tabTwoButton = document.querySelector('section:first-of-type>section>button:nth-of-type(2)');
@@ -136,9 +161,25 @@ tabOneButton.addEventListener('click', function () {
     tabOneContent.style.display = 'block';
 });
 
+
+
+
+var removeAllButton = document.querySelector('body > section:nth-of-type(2) > section:nth-of-type(2) > button:nth-of-type(2)');
+removeAllButton.addEventListener('click', () => {
+    toegevoegdeNummers = [];
+    mijnPlaylist2.innerHTML = "";
+});
+
+
 // toegepaste feedback:
 // class ipv .style method voor navigation
 // remove button
 // geen spatie in de folder meer
 
-// nog doen; maak van 'play' => 'pause'
+// nog doen; 
+//1. maak van 'play' => 'pause' -> werkt niet op cloned list
+// 'pause preview' gaat alleen terug naar 'play preview' als je op een nummer klikt binnen dezelfde lijst
+// pause werkt niet op cloned list omdat die buttons niet goed zijn geselecteerd. maar hoe..?
+
+//2. zorgen dat play all button werkt.. 
+//speelt nu alle nummers tegelijk, en vgm update het niet als er een nieuw nummer wordt toegevoegd nadat je al hebt geklikt op play all
