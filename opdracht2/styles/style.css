@@ -147,7 +147,7 @@
      flex-direction: column;
      justify-content: center;
      align-items: center;
-     height: 100dvh;
+     margin-top: 2rem;
    }
 
    li {
