@@ -1,99 +1,156 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Sortable/1.13.0/Sortable.min.js"></script>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="styles/style.css" />
+    <title>Mijn muziekspeler</title>
+  </head>
 
-<head>
-  <meta charset="UTF-8">
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/Sortable/1.13.0/Sortable.min.js"></script>
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="styles/style.css">
-  <title>Mijn muziekspeler</title>
-</head>
-
-<body>
-  <section>
+  <body>
     <section>
-      <button>Tab #1</button>
-      <button>Tab #2</button>
-    </section>
-  </section>
-
-  <section>
-    <section>
-      <h1>Choose songs</h1>
-      <ul>
-        <li>
-          <h3>I Been Drinking - Future</h3>
-          <audio src="../opdracht2/music-files/song-1-preview.mp3"
-            data-src="../opdracht2/music-files/song-1-preview.mp3"></audio>
-          <button data-action="play-preview">Play Preview</button>
-          <button data-action="add" data-preview="../opdracht2/music-files/song-1-preview.mp3"
-            data-src="../opdracht2/music-files/song-1-preview.mp3">Add
-            Song</button>
-        </li>
-        <li>
-          <h3>Say It - Tory Lanez</h3>
-          <audio src="../opdracht2/music-files/song-2-preview.mp3" data-src="../opdracht2/music-files/song-2-preview.mp3"></audio>
-          <button data-action="play-preview">Play Preview</button>
-          <button data-action="add" data-preview="../opdracht2/music-files/song-2-preview.mp3"
-            data-src="../opdracht2/music-files/song-2-preview.mp3">Add
-            Song</button>
-        </li>
-        <li>
-          <h3>Love You Like Crazy - Taeyeon</h3>
-          <audio src="../opdracht2/music-files/song-3-preview.mp3" data-src="../opdracht2/music-files/song-3-preview.mp3"></audio>
-          <button data-action="play-preview">Play Preview</button>
-          <button data-action="add" data-preview="../opdracht2/music-files/song-3-preview.mp3"
-            data-src="../opdracht2/music-files/song-3-preview.mp3">Add
-            Song</button>
-        </li>
-        <li>
-          <h3>Cupid (Twin Ver.) - FIFTYFIFTY</h3>
-          <audio src="../opdracht2/music-files/song-4-preview.mp3" data-src="../opdracht2/music-files/song-4-preview.mp3"></audio>
-          <button data-action="play-preview">Play Preview</button>
-          <button data-action="add" data-preview="../opdracht2/music-files/song-4-preview.mp3" data-src="../opdracht2/music-files/song-4-preview.mp3">Add
-            Song</button>
-        </li>
-        <li>
-          <h3>Boys a Liar Pt.2 - Ice Spice, PinkPantheress</h3>
-          <audio src="../opdracht2/music-files/song-5-preview.mp3" data-src="../opdracht2/music-files/song-5-preview.mp3"></audio>
-          <button data-action="play-preview">Play Preview</button>
-          <button data-action="add" data-preview="../opdracht2/music-files/song-5-preview.mp3" data-src="../opdracht2/music-files/song-5-preview.mp3">Add
-            Song</button>
-        </li>
-        <li>
-          <h3>Song Title 6</h3>
-          <audio src="../opdracht2/music-files/song-6-preview.mp3" data-src="../opdracht2/music-files/song-6-preview.mp3"></audio>
-          <button data-action="play-preview">Play Preview</button>
-          <button data-action="add" data-preview="../opdracht2/music-files/song-6-preview.mp3" data-src="../opdracht2/music-files/song-6-preview.mp3">Add
-            Song</button>
-        </li>
-        <li>
-          <h3>Song Title 7</h3>
-          <audio src="../opdracht2/music-files/song-7-preview.mp3" data-src="../opdracht2/music-files/song-7-preview.mp3"></audio>
-          <button data-action="play-preview">Play Preview</button>
-          <button data-action="add" data-preview="../opdracht2/music-files/song-7-preview.mp3" data-src="../opdracht2/music-files/song-7-preview.mp3">Add
-            Song</button>
-        </li>
-        <li>
-          <h3>Song Title 8</h3>
-          <audio src="../opdracht2/music-files/song-8-preview.mp3" data-src="../opdracht2/music-files/song-8-preview.mp3"></audio>
-          <button data-action="play-preview">Play Preview</button>
-          <button data-action="add" data-preview="../opdracht2/music-files/song-8-preview.mp3" data-src="../opdracht2/music-files/song-8-preview.mp3">Add
-            Song</button>
-        </li>
-      </ul>
+      <section>
+        <button aria-expanded="true">Tab #1</button>
+        <button aria-expanded="false">Tab #2</button>
+      </section>
     </section>
 
     <section>
-      <h1>My playlist</h1>
-      <button>Play all</button>
-      <button>Remove all</button>
-      <ul></ul>
+      <section>
+        <h1>Choose songs</h1>
+        <ul>
+          <li data-id="song-1">
+            <h3>I Been Drinking - Future</h3>
+            <audio
+              src="../opdracht2/music-files/song-1-preview.mp3"
+              data-src="../opdracht2/music-files/song-1-preview.mp3"
+            ></audio>
+            <button data-action="play-preview">Play Preview</button>
+            <button
+              data-action="add"
+              data-preview="../opdracht2/music-files/song-1-preview.mp3"
+              data-src="../opdracht2/music-files/song-1-preview.mp3"
+            >
+              Add Song
+            </button>
+          </li>
+          <li data-id="song-2">
+            <h3>Say It - Tory Lanez</h3>
+            <audio
+              src="../opdracht2/music-files/song-2-preview.mp3"
+              data-src="../opdracht2/music-files/song-2-preview.mp3"
+            ></audio>
+            <button data-action="play-preview">Play Preview</button>
+            <button
+              data-action="add"
+              data-preview="../opdracht2/music-files/song-2-preview.mp3"
+              data-src="../opdracht2/music-files/song-2-preview.mp3"
+            >
+              Add Song
+            </button>
+          </li>
+          <li data-id="song-3">
+            <h3>Love You Like Crazy - Taeyeon</h3>
+            <audio
+              src="../opdracht2/music-files/song-3-preview.mp3"
+              data-src="../opdracht2/music-files/song-3-preview.mp3"
+            ></audio>
+            <button data-action="play-preview">Play Preview</button>
+            <button
+              data-action="add"
+              data-preview="../opdracht2/music-files/song-3-preview.mp3"
+              data-src="../opdracht2/music-files/song-3-preview.mp3"
+            >
+              Add Song
+            </button>
+          </li>
+          <li data-id="song-4">
+            <h3>Cupid (Twin Ver.) - FIFTYFIFTY</h3>
+            <audio
+              src="../opdracht2/music-files/song-4-preview.mp3"
+              data-src="../opdracht2/music-files/song-4-preview.mp3"
+            ></audio>
+            <button data-action="play-preview">Play Preview</button>
+            <button
+              data-action="add"
+              data-preview="../opdracht2/music-files/song-4-preview.mp3"
+              data-src="../opdracht2/music-files/song-4-preview.mp3"
+            >
+              Add Song
+            </button>
+          </li>
+          <li data-id="song-5">
+            <h3>Boys a Liar Pt.2 - Ice Spice, PinkPantheress</h3>
+            <audio
+              src="../opdracht2/music-files/song-5-preview.mp3"
+              data-src="../opdracht2/music-files/song-5-preview.mp3"
+            ></audio>
+            <button data-action="play-preview">Play Preview</button>
+            <button
+              data-action="add"
+              data-preview="../opdracht2/music-files/song-5-preview.mp3"
+              data-src="../opdracht2/music-files/song-5-preview.mp3"
+            >
+              Add Song
+            </button>
+          </li>
+          <li data-id="song-6">
+            <h3>Song Title 6</h3>
+            <audio
+              src="../opdracht2/music-files/song-6-preview.mp3"
+              data-src="../opdracht2/music-files/song-6-preview.mp3"
+            ></audio>
+            <button data-action="play-preview">Play Preview</button>
+            <button
+              data-action="add"
+              data-preview="../opdracht2/music-files/song-6-preview.mp3"
+              data-src="../opdracht2/music-files/song-6-preview.mp3"
+            >
+              Add Song
+            </button>
+          </li>
+          <li data-id="song-7">
+            <h3>Song Title 7</h3>
+            <audio
+              src="../opdracht2/music-files/song-7-preview.mp3"
+              data-src="../opdracht2/music-files/song-7-preview.mp3"
+            ></audio>
+            <button data-action="play-preview">Play Preview</button>
+            <button
+              data-action="add"
+              data-preview="../opdracht2/music-files/song-7-preview.mp3"
+              data-src="../opdracht2/music-files/song-7-preview.mp3"
+            >
+              Add Song
+            </button>
+          </li>
+          <li data-id="song-8">
+            <h3>Song Title 8</h3>
+            <audio
+              src="../opdracht2/music-files/song-8-preview.mp3"
+              data-src="../opdracht2/music-files/song-8-preview.mp3"
+            ></audio>
+            <button data-action="play-preview">Play Preview</button>
+            <button
+              data-action="add"
+              data-preview="../opdracht2/music-files/song-8-preview.mp3"
+              data-src="../opdracht2/music-files/song-8-preview.mp3"
+            >
+              Add Song
+            </button>
+          </li>
+        </ul>
+      </section>
+
+      <section>
+        <h1>My playlist</h1>
+        <button disabled="true">Play all</button>
+        <button disabled="true">Remove all</button>
+        <ul></ul>
+      </section>
     </section>
-  </section>
-  <script src="../opdracht2/scripts/script.js"></script>
-
-</body>
-
+    <script src="../opdracht2/scripts/script.js"></script>
+  </body>
 </html>

@@ -17,6 +17,8 @@ console.log(mijnPlaylist2);
 var huidigeAudioSpeler = null;
 var toegevoegdeNummers = [];
 
+var playAll = false;
+
 function stopMuziekBehalveEen(audioPlayer) {
   var audioSpelers = document.querySelectorAll("audio");
   audioSpelers.forEach((player) => {
@@ -29,8 +31,7 @@ function stopMuziekBehalveEen(audioPlayer) {
 voegNummerButtons.forEach((toevoegButton) => {
   toevoegButton.addEventListener("click", () => {
     var oorspronkelijkeItem = toevoegButton.parentElement;
-    var oorspronkelijkeAudioSpeler =
-      oorspronkelijkeItem.querySelectorAll("audio")[0];
+    var oorspronkelijkeAudioSpeler = oorspronkelijkeItem.querySelector("audio");
     var oorspronkelijkeSrc = oorspronkelijkeAudioSpeler.getAttribute("src");
     var titelNummer = oorspronkelijkeSrc.substring(
       oorspronkelijkeSrc.lastIndexOf("/") + 1,
@@ -45,11 +46,11 @@ voegNummerButtons.forEach((toevoegButton) => {
     toegevoegdeNummers.push(titelNummer);
 
     var oorspronkelijkeSpeelButton =
-      oorspronkelijkeItem.querySelectorAll("button")[0];
+      oorspronkelijkeItem.querySelector("button");
 
     var copyItem = oorspronkelijkeItem.cloneNode(true);
-    var copyAudiospeler = copyItem.querySelectorAll("audio")[0];
-    var copySpeelButton = copyItem.querySelectorAll("button")[0];
+    var copyAudiospeler = copyItem.querySelector("audio");
+    var copySpeelButton = copyItem.querySelector("button");
 
     var oorspronkelijkeSrc = oorspronkelijkeAudioSpeler.getAttribute("src");
     var titelNummer = oorspronkelijkeSrc.substring(
@@ -78,14 +79,9 @@ voegNummerButtons.forEach((toevoegButton) => {
       huidigeAudioSpeler = copyAudiospeler;
     });
 
-    var action = copySpeelButton.getAttribute("data-action");
-    if (action === "play-preview") {
-      copySpeelButton.addEventListener("click", () => {
-        stopMuziek();
-        var audioSpeler = copyItem.querySelectorAll("audio")[0];
-        audioPlayer.play();
-      });
-    }
+    copyAudiospeler.addEventListener("ended", (event) => {
+      handleEndOfSong(event);
+    });
 
     var removeButton = document.createElement("button");
     removeButton.innerHTML = "Remove";
@@ -98,6 +94,10 @@ voegNummerButtons.forEach((toevoegButton) => {
     mijnPlaylist2.appendChild(copyItem);
     copyItem.appendChild(removeButton);
     copyItem.querySelector('button[data-action="add"]').remove();
+
+    // enable remove all and play all
+    removeAllButton.disabled = false;
+    playAllButton.disabled = false;
   });
 });
 
@@ -143,14 +143,42 @@ speelButtons.forEach((playButton) => {
   });
 });
 
-// var playAllButton = document.querySelector('body > section:nth-of-type(2) > section:nth-of-type(2) > button:first-of-type');
-// playAllButton.addEventListener('click', () => {
-//     var playlistItems = mijnPlaylist2.querySelectorAll("li");
-//     for (var i = 0; i < playlistItems.length; i++) {
-//         var audioPlayer = playlistItems[i].querySelector('audio');
-//         audioPlayer.play();
-//     }
-// });
+var playAllButton = document.querySelector(
+  "body > section:nth-of-type(2) > section:nth-of-type(2) > button:first-of-type"
+);
+
+playAllButton.addEventListener("click", () => {
+  const eersteNummer = mijnPlaylist2.querySelector("li");
+
+  if (eersteNummer) {
+    const eersteAudio = eersteNummer.querySelector("audio");
+    eersteAudio.play();
+
+    playAll = true;
+  }
+});
+
+function handleEndOfSong(event) {
+  if (playAll) {
+    // zoek volgende nummer en spelen
+    const currentAudio = event.target;
+    currentSong = currentAudio.closest("li");
+
+    const nextSong = currentSong.nextElementSibling;
+
+    if (nextSong) {
+      //   nummer zoeken en spelen
+      const nextAudio = nextSong.querySelector("audio");
+      nextAudio.play();
+    } else {
+      //   klaar met play all
+      playAll = false;
+      console.log("klaar");
+    }
+  } else {
+    // huidige button naar pause
+  }
+}
 
 var tabOneButton = document.querySelector(
   "section:first-of-type>section>button:first-of-type"
@@ -173,6 +201,9 @@ tabTwoButton.addEventListener("click", function () {
   tabTwoButton.classList.add("activeButton");
   tabOneButton.classList.remove("activeButton");
 
+  tabTwoButton.ariaExpanded = true;
+  tabOneButton.ariaExpanded = false;
+
   tabTwoContent.style.display = "block";
   tabOneContent.style.display = "none";
 });
@@ -181,20 +212,28 @@ tabOneButton.addEventListener("click", function () {
   tabTwoButton.classList.remove("activeButton");
   tabOneButton.classList.add("activeButton");
 
+  tabOneButton.ariaExpanded = true;
+  tabTwoButton.ariaExpanded = false;
+
   tabTwoContent.style.display = "none";
   tabOneContent.style.display = "block";
 });
 
+// REMOVE ALL
 var removeAllButton = document.querySelector(
   "body > section:nth-of-type(2) > section:nth-of-type(2) > button:nth-of-type(2)"
 );
+
 removeAllButton.addEventListener("click", () => {
-  if (mijnPlaylist2.innerHTML === "") {
-    alert("This playlist is already empty!");
-  } else {
-    toegevoegdeNummers = [];
-    mijnPlaylist2.innerHTML = "";
-  }
+  //   if (mijnPlaylist2.innerHTML === "") {
+  //     alert("This playlist is already empty!");
+  //   } else {
+  toegevoegdeNummers = [];
+  mijnPlaylist2.innerHTML = "";
+
+  removeAllButton.disabled = true;
+  playAllButton.disabled = true;
+  //   }
 });
 
 // toegepaste feedback:

@@ -1,209 +1,213 @@
- /* CSS Document */
+/* CSS Document */
 
- /*********/
- /* FONTS */
- /*********/
- @font-face {
-   font-family: Circular;
-   src: url("../fonts/CircularStd-Book.otf") format("opentype");
- }
+/*********/
+/* FONTS */
+/*********/
+@font-face {
+  font-family: Circular;
+  src: url("../fonts/CircularStd-Book.otf") format("opentype");
+}
 
- @font-face {
-   font-family: Circular-Bold;
-   src: url("../fonts/CircularStd-Bold.otf") format("opentype");
- }
+@font-face {
+  font-family: Circular-Bold;
+  src: url("../fonts/CircularStd-Bold.otf") format("opentype");
+}
 
- /**************/
- /* CSS REMEDY */
- /**************/
- *,
- *::after,
- *::before {
-   box-sizing: border-box;
-   margin: 0;
-   padding: 0;
- }
+/**************/
+/* CSS REMEDY */
+/**************/
+*,
+*::after,
+*::before {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
 
- button:not([disabled]),
- summary {
-   cursor: pointer;
- }
+button:not([disabled]),
+summary {
+  cursor: pointer;
+}
 
- /*********************/
- /* CUSTOM PROPERTIES */
- /*********************/
- :root {
-   /* startje */
-   --color-background: white;
-   --color-text-most: #111;
-   --color-text-button: #535353;
-   --color-highlight: #f2f2f2;
+/*********************/
+/* CUSTOM PROPERTIES */
+/*********************/
+:root {
+  /* startje */
+  --color-background: white;
+  --color-text-most: #111;
+  --color-text-button: #535353;
+  --color-highlight: #f2f2f2;
 
-   --color-highlight-button: #1db954;
-   --color-text-button-highlight: #eee;
- }
+  --color-highlight-button: #1db954;
+  --color-text-button-highlight: #eee;
+}
 
- @media (prefers-color-scheme: dark) {
-   :root {
-     --color-background: #181818;
-     --color-text-most: #eee;
-     --color-highlight: #302c2c;
-     --color-text-button: #eee;
-   }
+@media (prefers-color-scheme: dark) {
+  :root {
+    --color-background: #181818;
+    --color-text-most: #eee;
+    --color-highlight: #302c2c;
+    --color-text-button: #eee;
+  }
+}
 
- }
+/****************/
+/* JOUW STYLING */
+/****************/
 
- /****************/
- /* JOUW STYLING */
- /****************/
+body {
+  font-family: circular, sans-serif;
+  background-color: var(--color-background);
+}
 
- body {
-   font-family: circular, sans-serif;
-   background-color: var(--color-background);
- }
+h1 {
+  margin-bottom: 1rem;
+}
 
- h1 {
-   margin-bottom: 1rem;
- }
+h1,
+h3 {
+  color: var(--color-text-most);
+}
 
- h1,
- h3 {
-   color: var(--color-text-most);
- }
+h3 {
+  font-size: 1rem;
+  margin-bottom: 0.75rem;
+}
 
- h3 {
-   font-size: 1rem;
-   margin-bottom: .75rem;
- }
+li {
+  margin-bottom: 1rem;
+  padding: 0.5rem;
+}
 
- li {
-   margin-bottom: 1rem;
-   padding: .5rem;
- }
+button {
+  font-family: circular, sans-serif;
+  border-radius: 1rem;
+  border: none;
+  padding: 0.5rem 1.5rem;
+  margin-left: 0.5rem;
+}
 
- button {
-   font-family: circular, sans-serif;
-   background-color: var(--color-highlight);
-   color: var(--color-text-button);
-   border-radius: 1rem;
-   border: none;
-   padding: 0.5rem 1.5rem;
-   margin-left: 0.5rem;
- }
+button:not(:disabled) {
+  background-color: var(--color-highlight);
+  color: var(--color-text-button);
+}
 
- li:hover {
-   background-color: var(--color-highlight);
-   /* width: 30rem; */
-   border-radius: 0.5rem;
-   padding: .5rem;
-   /* margin-left: -1rem; */
- }
+li:hover {
+  background-color: var(--color-highlight);
+  /* width: 30rem; */
+  border-radius: 0.5rem;
+  padding: 0.5rem;
+  /* margin-left: -1rem; */
+}
 
- li:hover button:hover {
-   background: var(--color-highlight-button);
- }
+li:hover button:not(:disabled):hover {
+  background: var(--color-highlight-button);
+}
 
- li:hover button {
-   background: var(--color-background)
- }
+li:hover button:not(:disabled) {
+  background: var(--color-background);
+}
 
- button:hover,
- button:focus {
-   color: var(--color-text-button-highlight);
-   background: var(--color-highlight-button);
- }
+button:not(:disabled):hover,
+button:focus {
+  color: var(--color-text-button-highlight);
+  background: var(--color-highlight-button);
+}
 
- ul > li:first-of-type {
+ul > li:first-of-type {
   margin-top: 1rem;
 }
 
- .activeButton {
-    font-weight: bold;
-    border-bottom: 2px solid white;
-    background: var(--color-highlight-button)
- }
+.activeButton {
+  font-weight: bold;
+  border-bottom: 2px solid white;
+  background: var(--color-highlight-button);
+}
+
+button[aria-expanded="true"] {
+  color: yellow;
+}
 
 .inactiveButton {
   display: none;
 }
 
- @media only screen and (min-width: 768px) {
-   * {
-     margin: 0;
-     padding: 0;
-     box-sizing: border-box;
-   }
+@media only screen and (min-width: 768px) {
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
 
-   section:nth-of-type(2)>section {
-     display: block !important;
-   }
+  section:nth-of-type(2) > section {
+    display: block !important;
+  }
 
-   section:first-of-type>section {
-     display: none;
-   }
+  section:first-of-type > section {
+    display: none;
+  }
 
-   body {
-     display: flex;
-     flex-direction: column;
-     justify-content: center;
-     align-items: center;
-     margin-top: 2rem;
-   }
+  body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 2rem;
+  }
 
-   li {
-     list-style-type: none;
-   }
+  li {
+    list-style-type: none;
+  }
 
-   section:nth-of-type(2) {
-     display: flex;
-     flex-direction: row;
-     justify-content: center;
-     gap: 3rem;
-   }
+  section:nth-of-type(2) {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    gap: 3rem;
+  }
 
-   section:first-of-type {
-     display: flex;
-     justify-content: center;
-     gap: .5rem;
-   }
- }
+  section:first-of-type {
+    display: flex;
+    justify-content: center;
+    gap: 0.5rem;
+  }
+}
 
- @media only screen and (max-width: 768px) {
-   body {
-     display: flex;
-     flex-direction: column;
-     justify-content: center;
-     align-items: center;
-     /* height: 100dvh; */
-     margin-top: 2rem;
-   }
+@media only screen and (max-width: 768px) {
+  body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    /* height: 100dvh; */
+    margin-top: 2rem;
+  }
 
-   li {
-     list-style-type: none;
-   }
+  li {
+    list-style-type: none;
+  }
 
-   section:nth-of-type(2)>section:first-of-type {
-     display: flex;
-     flex-direction: column;
-   }
+  section:nth-of-type(2) > section:first-of-type {
+    display: flex;
+    flex-direction: column;
+  }
 
-   section:nth-of-type(2)>section:last-of-type {
-     display: none;
-   }
+  section:nth-of-type(2) > section:last-of-type {
+    display: none;
+  }
 
-   h1 {
-     font-size: 1rem;
-     margin-top: 1rem;
-   }
+  h1 {
+    font-size: 1rem;
+    margin-top: 1rem;
+  }
 
-   h3 {
-     font-size: .75rem;
-   }
+  h3 {
+    font-size: 0.75rem;
+  }
 
-   li {
-     margin-bottom: 1rem;
-     padding: .2rem;
-   }
-
- }
-
+  li {
+    margin-bottom: 1rem;
+    padding: 0.2rem;
+  }
+}
