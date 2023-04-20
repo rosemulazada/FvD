@@ -279,6 +279,7 @@ var removeAllButton = document.querySelector(
   "body > section:nth-of-type(2) > section:nth-of-type(2) > button:nth-of-type(2)"
 );
 
+//maak hele array leeg en maak de playlist leeg. disable beide 'all' function buttons en re-enable alle add buttons.
 removeAllButton.addEventListener("click", () => {
   toegevoegdeNummers = [];
   mijnPlaylist2.innerHTML = "";
