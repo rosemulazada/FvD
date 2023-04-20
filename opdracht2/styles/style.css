@@ -115,7 +115,7 @@ button:focus {
   background: var(--color-highlight-button);
 }
 
-ul > li:first-of-type {
+ul>li:first-of-type {
   margin-top: 1rem;
 }
 
@@ -126,12 +126,13 @@ ul > li:first-of-type {
 }
 
 button[aria-expanded="true"] {
-  color: yellow;
+  font-weight: bold;
+  border-bottom: 2px solid white;
+  background: var(--color-highlight-button);
 }
 
-.inactiveButton {
-  display: none;
-}
+
+
 
 @media only screen and (min-width: 768px) {
   * {
@@ -140,11 +141,11 @@ button[aria-expanded="true"] {
     box-sizing: border-box;
   }
 
-  section:nth-of-type(2) > section {
+  section:nth-of-type(2)>section {
     display: block !important;
   }
 
-  section:first-of-type > section {
+  section:first-of-type>section {
     display: none;
   }
 
@@ -188,13 +189,14 @@ button[aria-expanded="true"] {
     list-style-type: none;
   }
 
-  section:nth-of-type(2) > section:first-of-type {
+  section:nth-of-type(2)>section:first-of-type {
     display: flex;
     flex-direction: column;
   }
 
-  section:nth-of-type(2) > section:last-of-type {
+  section:nth-of-type(2)>section:last-of-type {
     display: none;
+    margin-top: 1rem;
   }
 
   h1 {
@@ -210,4 +212,9 @@ button[aria-expanded="true"] {
     margin-bottom: 1rem;
     padding: 0.2rem;
   }
+
+  .visibleContent {
+    display: block;
+  }
+
 }
