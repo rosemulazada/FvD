@@ -4,6 +4,8 @@
 
 **De opdrachten:** [opdracht 1](opdracht1/index.html) en [opdracht 2](opdracht2/index.html)
 
+**note voor opdracht 2: wanneer je 'i been drinkin' van 'future' toevoegt aan de playlist en het nummer dan afspeelt, krijg je de ingekorte versie terug - dit was om zeker te zijn dat alle nummers wel spelen. dan hoef je niet drie minuten te wachten op een nummer om te checken of het nummer erna zal afspelen of niet.
+
 ## Bronnenlijst
 
 1. https://stackoverflow.com/questions/22534084/can-i-create-border-bottom-without-diagonal-corner
