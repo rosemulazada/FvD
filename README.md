@@ -5,6 +5,7 @@
 **De opdrachten:** [opdracht 1](opdracht1/index.html) en [opdracht 2](opdracht2/index.html)
 
 **note voor opdracht 2: wanneer je 'i been drinkin' van 'future' toevoegt aan de playlist en het nummer dan afspeelt, krijg je de ingekorte versie terug - dit was om zeker te zijn dat alle nummers wel spelen. dan hoef je niet drie minuten te wachten op een nummer om te checken of het nummer erna zal afspelen of niet.
+**note voor opdracht 2: 'i been drinkin' en 'say it' hebben een 'preview' versie - het is een prototype dus vandaar zijn niet alle nummers aan de linkerkant ingekort. 
 
 ## Bronnenlijst
 
